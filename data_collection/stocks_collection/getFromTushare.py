@@ -4,6 +4,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 picpath = 'Visualization/股票数据可视化图表'
+
+
 class GetData:
     def __init__(self, code, start_time, jiaoyisuo, stock_name):
         self.code = code
@@ -44,8 +46,9 @@ class GetData:
             self.ori_data = pd.read_csv(f"data\\stocks_data\\{self.stocks_name}.csv")
             print(f"{self.stocks_name}.csv 文件删除完毕")
 
+
 def main(start_time):
-    f = open('target','r',encoding='utf-8')
+    f = open('target', 'r', encoding='utf-8')
     stock_name = f.read().split('\n')
     print(stock_name)
     for s in stock_name:
@@ -56,6 +59,7 @@ def main(start_time):
         print(code)
         print(exchange)
         GetData(code, start_time, exchange, stock)
+
 
 if __name__ == '__main__':
     start_time = '2005-05-05'

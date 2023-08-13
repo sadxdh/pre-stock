@@ -35,17 +35,16 @@ def main(filename):
     # # 假设您已经有了一个名为df的DataFrame对象，其中包含日期（在df.index中）和收盘价（在df['close']中）
     # # 创建新列来存储涨跌幅度
     # df = df.tail(100)
-    df['涨幅'] = (df['close'] - df['close'].shift(5)) / df['close'].shift(5)
-    df['跌幅'] = (df['close'].shift(5) - df['close']) / df['close'].shift(5)
+    df['涨跌幅'] = (df['close'] - df['close'].shift(5)) / df['close'].shift(5)
     def rise(df):
         plt.figure(figsize=(16, 8))
-        plt.title(f'{filename}-涨幅')
+        plt.title(f'{filename}-涨跌幅')
         # 添加0基准线
         plt.axhline(0, color='red', linestyle='--')
         data = df[-200:]
-        data['涨幅'].plot(legend=True)  # 交易量与股价走势 相关性
+        data['涨跌幅'].plot(legend=True)  # 交易量与股价走势 相关性
         plt.rcParams['axes.unicode_minus'] = False
-        plt.savefig(f"Visualization/股票数据可视化图表/{filename}-涨幅.png")
+        plt.savefig(f"Visualization/股票数据可视化图表/{filename}-涨跌幅.png")
     rise(df)
 
     # 假设您已经有了一个名为df的DataFrame对象，其中包含日期（在df.index中）和收盘价（在df['close']中）
@@ -143,9 +142,9 @@ def main(filename):
 
 
 if __name__ == '__main__':
-    stock = '邯郸钢铁'
+    stock = '浦发银行'
     clean_filename = main(stock)
-    analytics.PeakDetection.PeakDetection(clean_filename)
+    # analytics.PeakDetection.PeakDetection(clean_filename)
 
 
 '''
